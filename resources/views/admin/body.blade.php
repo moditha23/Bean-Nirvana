@@ -1,15 +1,8 @@
 <div class="main-panel">
     <div class="content-wrapper">
       <div class="row">
-        
-  
             <div class="card-body py-0 px-0 px-sm-3">
               <div class="row align-items-center">
-                
-               
-                
-             
-    
           </div>
         </div>
       </div>

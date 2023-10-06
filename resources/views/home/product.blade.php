@@ -60,7 +60,7 @@
                 </div>
              </div>
           </div>
-          <!--<div class="col-sm-6 col-md-4 col-lg-4">
+          <div class="col-sm-6 col-md-4 col-lg-4">
              <div class="box">
                 <div class="option_container">
                    <div class="options">
@@ -77,15 +77,15 @@
                 </div>
                 <div class="detail-box">
                    <h5>
-                      Women's Dress
+                      French Toast-Dark
                    </h5>
                    <h6>
-                      $68
+                      Rs.16800
                    </h6>
                 </div>
              </div>
           </div>
-          <div class="col-sm-6 col-md-4 col-lg-4">
+          <!--<div class="col-sm-6 col-md-4 col-lg-4">
              <div class="box">
                 <div class="option_container">
                    <div class="options">

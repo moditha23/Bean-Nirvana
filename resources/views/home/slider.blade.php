@@ -40,14 +40,17 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Sale 20% Off
+                                    10% Off On
                                     </span>
                                     <br>
-                                    On Everything
+                                     You'r First Order
                                  </h1>
-                                 <p>
-                                   
-                                 </p>
+                                 <p style="color: white; font-size: 20px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+    PROMO #FIRSTNIRVANA23
+</p>
+<br>
+                                 <br>
+                                 <br>
                                  <div class="btn-box">
                                     <a href="" class="btn1">
                                     Shop Now
@@ -65,13 +68,18 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Sale 20% Off
+                                    Free Delivery
                                     </span>
                                     <br>
-                                    On Everything
+                                    On UBER EATS
                                  </h1>
-                                 <p>
-                                 </p>
+                                 <p style="color: white; font-size: 20px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+    PROMO #UBERNIRVANA1
+</p>
+<br>
+                                 <br>
+                                 <br>
+                                 
                                  <div class="btn-box">
                                     <a href="" class="btn1">
                                     Shop Now

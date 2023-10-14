@@ -10,23 +10,23 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html" style="">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="" style="">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" style=""> <span class="nav-label">Pages <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="about.html" >About</a></li>
-                            <li><a href="testimonial.html" style="">Testimonial</a></li>
+                            <li><a href="" >About</a></li>
+                            <li><a href="" style="">Testimonial</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="product.html" style="">Products</a>
+                        <a class="nav-link" href="" style="">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog_list.html" style="">Blog</a>
+                        <a class="nav-link" href="" style="">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html" style="">Contact</a>
+                        <a class="nav-link" href="" style="">Contact</a>
                     </li>
                     <form class="form-inline">
                         <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit" style="">

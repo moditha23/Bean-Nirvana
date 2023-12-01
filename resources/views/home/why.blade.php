@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="box" style="background-color: #fff; border-radius: 10px; padding: 20px; text-align: center;">
+                <div class="box"  style="background-color: #fff; border-radius: 10px; padding: 20px; text-align: center;">
                     <h5 style="font-size: 24px; font-weight: bold; color: #333;">
                         Rich Flavors
                     </h5>

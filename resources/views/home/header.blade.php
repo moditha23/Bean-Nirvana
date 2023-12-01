@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="" style="">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#" style="">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" style=""> <span class="nav-label">Pages <span class="caret"></span></a>
@@ -23,7 +23,7 @@
                         <a class="nav-link" href="" style="">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" style="">Blog</a>
+                        <a class="nav-link" href="" target="_blank" style="">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="" style="">Contact</a>

@@ -21,7 +21,7 @@
                                 <div class="widget_menu">
                                     <h3 style="color: #fff;">Menu</h3>
                                     <ul>
-                                        <li><a href="#" style="color: #fff;">Home</a></li>
+                                        <li><a href="home.blade.php" style="color: #fff;">Home</a></li>
                                         <li><a href="#" style="color: #fff;">About</a></li>
                                         <li><a href="#" style="color: #fff;">Services</a></li>
                                         <li><a href="#" style="color: #fff;">Testimonial</a></li>

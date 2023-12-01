@@ -29,7 +29,7 @@
 
  <!--Slider-->
 
-         @include('home.slider')
+      @include('home.slider')
 
 
       </div>

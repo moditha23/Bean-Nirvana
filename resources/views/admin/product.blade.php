@@ -8,13 +8,13 @@
       .div_center{
         text-align: center;
         padding-top: 40px;
-        
+
       }
      .div_center h1{
         font-size: 40px;
         padding-bottom: 40px;
       }
-   
+
       .text_color{
 
         color: black;

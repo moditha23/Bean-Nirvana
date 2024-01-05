@@ -58,32 +58,38 @@
     @csrf
     <div class="div_design">
         <label style="font-weight: bold; color: white;">Product Title:</label>
-        <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;" required="" type="text" name="title" placeholder="Write a title">
+        <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;"
+        required="" type="text" name="title" placeholder="Write a title">
     </div>
 
     <div class="div_design">
         <label style="font-weight: bold; color: white;">Product Description:</label>
-        <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;" required="" type="text" name="description" placeholder="Write a Description">
+        <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;"
+        required="" type="text" name="description" placeholder="Write a Description">
     </div>
 
     <div class="div_design">
         <label style="font-weight: bold; color: white;">Product Price:</label>
-        <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;" required="" type="number" name="price" placeholder="Write a Price">
+        <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;"
+        required="" type="number" name="price" placeholder="Write a Price">
     </div>
 
     <div class="div_design">
         <label style="font-weight: bold; color: white;">Discount Price:</label>
-        <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;" type="text" name="dis_price" placeholder="Discount if Available">
+        <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;"
+        type="text" name="dis_price" placeholder="Discount if Available">
     </div>
 
     <div class="div_design">
         <label style="font-weight: bold; color: white;">Product Quantity:</label>
-        <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;" required="" type="number" min="0" name="quantity" placeholder="Write the Product Quantity">
+        <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;"
+        required="" type="number" min="0" name="quantity" placeholder="Write the Product Quantity">
     </div>
 
     <div class="div_design">
         <label style="font-weight: bold; color: white;">Product Category:</label>
-        <select style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; color: black;" required="" name="catagory">
+        <select style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; color: black;"
+        required="" name="catagory">
             <option value="" selected="">Add Category Here</option>
             @foreach($catagory as $catagory)
                 <option value="{{$catagory -> catagory_name}}">{{$catagory -> catagory_name}}</option>

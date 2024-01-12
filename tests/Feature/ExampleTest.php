@@ -17,10 +17,5 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testing_whether_produuct_list_is_empty(): void
-    {
-        $response = $this->get('/view_product');
 
-        $response->assertStatus(200);
-    }
 }

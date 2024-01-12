@@ -15,7 +15,7 @@ class test_the_app_returns_successfully extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assert('productsssss');
+        $response->assert('products');
 
         $response->assertStatus(200);
     }

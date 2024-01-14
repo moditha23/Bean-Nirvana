@@ -12,7 +12,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $product=Product::all();
+        $product=Product::paginate(10);
         return view ('home.userpage',compact('product'));
 
 
@@ -30,7 +30,8 @@ public function redirect()
 
         else
         {
-            return view('home.userpage');
+            $product=Product::paginate(10);
+        return view ('home.userpage',compact('product'));
         }
     }
 }

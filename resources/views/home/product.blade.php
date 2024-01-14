@@ -6,8 +6,10 @@
           </h2>
        </div>
        <div class="row">
+            @foreach ($product as $products)
+
           <div class="col-sm-6 col-md-4 col-lg-4">
-             <div class="box">
+                         <div class="box">
                 <div class="option_container">
                    <div class="options">
                       <a href="" class="option1">
@@ -19,20 +21,48 @@
                    </div>
                 </div>
                 <div class="img-box">
-                   <img src="images/p1.png" alt="">
+                   <img src="product/{{$products->image}}" alt="">
                 </div>
                 <div class="detail-box">
                    <h5>
-                      Espresso
+                      {{ $products->title}}
                    </h5>
-                   <h6>
-                      Rs.7500.00
-                   </h6>
+
+                   @if($products->discount!=null)
+
+                   <h6 style="color: red">
+                     Discount Price
+                    <br>
+                    ${{ $products->discount}}
+                 </h6>
+
+                 <h6 style="text-decoration: line-through; color:blue">
+                    Price
+                    <br>
+                    ${{$products->price}}
+                 </h6>
+
+                @else
+
+                <h6 style="color: blue">
+                    Discount Price
+                    <br>
+                    ${{ $product->price}}
+                </h6>
+
+                @endif
+
                 </div>
              </div>
           </div>
 
+            @endforeach
 
+            <span style="padding-top: 20px;">
+
+            {!!$product->withQueryString()->links('pagination::bootstrap-5')!!}
+
+            </span>
 
     </div>
  </section>

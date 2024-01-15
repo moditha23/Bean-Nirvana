@@ -5,8 +5,10 @@
              Our <span>products</span>
           </h2>
        </div>
+
        <div class="row">
             @foreach ($product as $products)
+
 
           <div class="col-sm-6 col-md-4 col-lg-4">
                          <div class="box">
@@ -16,7 +18,7 @@
                       Product Details
                       </a>
 
-                      <from action="{{url('add_cart',$products->id)}}" method="Post">
+                    <form action="{{url('add_cart',$products->id)}}" method="Post">
                         @csrf
                         <div class="row">
 
@@ -29,8 +31,9 @@
                             <div class="col-md-4">
                                 <input type="submit" value="Add to Cart">
                             </div>
-                        </div
-                      </from>
+                        </div>
+                    </form>
+
 
                    </div>
                 </div>

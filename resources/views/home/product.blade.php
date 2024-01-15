@@ -12,12 +12,26 @@
                          <div class="box">
                 <div class="option_container">
                    <div class="options">
-                      <a href="" class="option1">
-                      Add to Cart
+                      <a href="{{url('product_details',$products->id)}}" class="option1">
+                      Product Details
                       </a>
-                      <a href="" class="option2">
-                      Buy Now
-                      </a>
+
+                      <from action="{{url('add_cart',$products->id)}}" method="Post">
+                        @csrf
+                        <div class="row">
+
+                            <div class="col-md-4">
+
+                                <input type="number" name="quantity" value="1" min="1" style="width: 65px" >
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="submit" value="Add to Cart">
+                            </div>
+                        </div
+                      </from>
+
                    </div>
                 </div>
                 <div class="img-box">

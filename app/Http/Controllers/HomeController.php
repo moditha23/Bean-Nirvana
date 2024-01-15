@@ -28,7 +28,31 @@ public function redirect()
 
         if ($usertype=='1'){
 
-            return view('admin.home');
+            $total_product=product::all()->count();
+
+            $total_order=order::all()->count();
+
+            $total_user=user::all()->count();
+
+            $total_cart=cart::all()->count();
+
+            $order=order::all();
+
+            $total_revenue=0;
+
+            foreach($order as $order)
+            {
+                $total_revenue=$total_revenue + $order->price;
+            }
+
+            $total_delivered=order::where('delivery_status','=','delevered')->get()->count();
+
+            $total_processing=order::where('delivery_status','=','Processing')->get()->count();
+
+            $total_paid=order::where('payment_ststus','=','Paid')->get()->count();
+
+
+            return view('admin.home',compact('total_product','total_order','total_user','total_revenue','total_delivered','total_processing','total_paid','total_cart'));
         }
 
         else
@@ -68,6 +92,7 @@ public function redirect()
             {
                 $cart->price=$product->price * $request->quantity;
             }
+
 
 
             $cart->image=$product->image;
@@ -148,6 +173,8 @@ public function redirect()
 
             $order->payment_ststus='Cash on Delivery';
             $order->delivery_status='Processing';
+
+
 
             $order->save();
 

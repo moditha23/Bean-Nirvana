@@ -71,17 +71,17 @@
     <div class="div_design">
         <label style="font-weight: bold; color: white;">Product Price:</label>
         <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;"
-        required="" type="number" name="price" placeholder="Write a Price">
+        required="" type="number" min="1" name="price" placeholder="Write a Price">
     </div>
 
     <div class="div_design">
-        <label style="font-weight: bold; color: white;">Discount Price:</label>
+        <label style="font-weight: bold; color: white;" min="1">Discount Price:</label>
         <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;"
-        type="text" name="dis_price" placeholder="Discount if Available">
+        type="text" name="dis_price" min="1" placeholder="Discount if Available">
     </div>
 
     <div class="div_design">
-        <label style="font-weight: bold; color: white;">Product Quantity:</label>
+        <label style="font-weight: bold; color: white;" min="1">Product Quantity:</label>
         <input style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; color: black;"
         required="" type="number" min="0" name="quantity" placeholder="Write the Product Quantity">
     </div>

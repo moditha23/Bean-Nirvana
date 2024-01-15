@@ -63,11 +63,11 @@
 
 @endif
 
-<h6>Product  Category : {{ $product->catagory}}</h6>
+<h6>Product  Category : {{$product->catagory}}</h6>
 
-<h6>Product Details : {{ $product->description}}</h6>
+<h6>Product Details : {{$product->description}}</h6>
 
-<h6>Available Quantity : {{ $product->quantity}}</h6>
+<h6>Available Quantity : {{$product->quantity}}</h6>
 
 <form action="{{url('add_cart',$product->id)}}" method="Post">
     @csrf
@@ -75,7 +75,7 @@
 
         <div class="col-md-4">
 
-            <input type="number" name="quantity" value="1" min="1" style="width: 65px" >
+            <input type="number" name="quantity" value="1" min="1" max="{{$product->quantity}}" style="width: 65px" >
 
         </div>
 

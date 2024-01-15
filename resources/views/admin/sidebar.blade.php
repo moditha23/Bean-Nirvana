@@ -56,7 +56,7 @@
         <span class="nav-link">Navigation</span>
       </li>
       <li class="nav-item menu-items">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('redirect')}}">
           <span class="menu-icon">
             <i class="mdi mdi-speedometer"></i>
           </span>
@@ -74,10 +74,10 @@
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('/view_product')}}">Add Products</a></li>
-            <li class="nav-item"> 
+            <li class="nav-item">
               <a class="nav-link" href="{{url('/show_product')}}">Show Products</a>
             </li>
-            
+
           </ul>
         </div>
       </li>
@@ -89,12 +89,13 @@
           <span class="menu-title">Catagory</span>
         </a>
       </li>
+
       <li class="nav-item menu-items">
-        <a class="nav-link" href="{{url('redirect')}}">
+        <a class="nav-link" href="{{url('order')}}">
           <span class="menu-icon">
             <i class="mdi mdi-playlist-play"></i>
           </span>
-          <span class="menu-title">Catagory</span>
+          <span class="menu-title">Orders</span>
         </a>
       </li>
        {{--  <li class="nav-item menu-items">

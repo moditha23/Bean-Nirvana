@@ -55,7 +55,18 @@ public function redirect()
             $cart->address=$user->address;
             $cart->user_id=$user->id;
             $cart->product_title=$product->title;
-            $cart->price=$product->price;
+
+            if($product->discount!=null)
+            {
+                $cart->price=$product->discount * $request->quantity;
+            }
+
+            else
+            {
+                $cart->price=$product->price * $request->quantity;
+            }
+
+
             $cart->image=$product->image;
             $cart->Product_id=$product->id;
             $cart->quantity=$request->quantity;
@@ -71,7 +82,42 @@ public function redirect()
         {
             return redirect('login');
         }
+
     }
+
+
+
+
+    public function show_cart()
+    {
+        if(Auth::id())
+        {
+            $id=Auth::user()->id;
+
+            $cart=cart::where('user_id','=',$id)->get();
+
+            return view('home.showcart',compact('cart'));
+        }
+
+        else
+        {
+            return redirect('login');
+        }
+
+    }
+
+
+    public function remove_cart($id)
+    {
+        $cart=cart::find($id);
+
+        $cart->delete();
+
+        return redirect()->back();
+    }
+
+
+
 }
 
 

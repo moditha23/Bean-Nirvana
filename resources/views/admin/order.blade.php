@@ -51,7 +51,7 @@
 
                 <h1 class="title_deg">All Orders</h1>
 
-                <table class="table_deg">
+                <table class="table_deg" style="border: 1px solid white;">
                     <tr class="th_deg">
                         <th>Name</th>
                         <th>Email</th>
@@ -63,10 +63,11 @@
                         <th>Payment Status</th>
                         <th>Delivery Status</th>
                         <th>Image</th>
+                        <th>Delivered</th>
                     </tr>
 
                     @foreach ($order as $order)
-                        <tr>
+                        <tr style="text-align: center; border: 1px solid white;">
                             <td class="td_deg">{{$order->name}}</td>
                             <td class="td_deg">{{$order->email}}</td>
                             <td class="td_deg">{{$order->address}}</td>
@@ -78,6 +79,16 @@
                             <td class="td_deg">{{$order->delivery_status}}</td>
                             <td class="td_deg">
                                 <img class="img_size" src="/product/{{$order->image}}">
+                            </td>
+                            <td>
+                                @if($order->delivery_status=='Processing')
+                                <a href="{{url('delivered',$order->id)}}" onclick="return confirm('Are you sure?')" class="btn btn-primary">Delivered</a>
+
+                                @else
+                                <p style="color: green; text-align: center;">Delivered</p>
+
+                                @endif
+
                             </td>
                         </tr>
                     @endforeach

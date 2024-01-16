@@ -12,23 +12,10 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{url('/')}}" style="">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" style=""> <span class="nav-label">Pages <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="" >About</a></li>
-                            <li><a href="" style="">Testimonial</a></li>
-                        </ul>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('products')}}" style="">Products</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="" target="_blank" style="">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="" style="">Contact</a>
-                    </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('show_cart')}}" style="">Cart</a>
                     </li>
@@ -36,12 +23,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('show_order')}}" style="">Order</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="" style="">Contact</a>
+                    </li>
 
                     <form class="form-inline">
-                        <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit" style="">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
+
                     </form>
                     @if (Route::has('login'))
                         @auth

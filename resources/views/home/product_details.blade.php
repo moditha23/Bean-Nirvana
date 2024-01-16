@@ -26,11 +26,13 @@
       <!--Header-->
       @include('home.header')
 
+      <br>
 
-      <div class="col-sm-6 col-md-4 col-lg-4" style="margin: auto; width: 50%; padding: 30px">
 
-<div class="img-box" style="padding: 20px">
-  <img src="/product/{{$product->image}}" alt="">
+      <div class="col-sm-6 col-md-4 col-lg-4" style="margin: auto; width: 50%; padding: 30px; border: 2px solid black; background-color:rgb(187, 187, 187);">
+
+<div class="img-box"  style="margin-left: 100px; ">
+  <img  width="250px" height="250px" src="/product/{{$product->image}}" alt="">
 </div>
 <div class="detail-box">
   <h5>
@@ -39,7 +41,7 @@
 
   @if($product->discount!=null)
 
-  <h6 style="color: red">
+  <h6 style="color: red;" >
     Discount Price
    <br>
    ${{ $product->discount}}
@@ -61,11 +63,12 @@
 
 @endif
 
-<h6>Product  Category : {{$product->catagory}}</h6>
+<h6 ><p style="font-weight: bold;">Product  Category :</p> {{$product->catagory}}</h6>
 
-<h6>Product Details : {{$product->description}}</h6>
+<h6><p style="font-weight: bold;">Product Details : </p>{{$product->description}}</h6>
 
-<h6>Available Quantity : {{$product->quantity}}</h6>
+<h6><p style="font-weight: bold;">Available Quantity :</p> {{$product->quantity}}</h6>
+<br>
 
 <form action="{{url('add_cart',$product->id)}}" method="Post">
     @csrf
@@ -88,7 +91,7 @@
 </div>
 </div>
 
-
+<br>
 
       <!-- footer start -->
       @include('home.fotter')

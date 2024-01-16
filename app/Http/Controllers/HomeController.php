@@ -11,6 +11,7 @@ use Session;
 use Stripe;
 use App\Models\Comment;
 use App\Models\Reply;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -150,6 +151,8 @@ public function redirect()
                 $cart->Product_id = $product->id;
                 $cart->quantity = $request->quantity;
                 $cart->save();
+
+                Alert::success('Product Added Successfully');
 
                 $product->quantity -= $request->quantity;
                 $product->save();

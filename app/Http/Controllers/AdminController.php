@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Catagory;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Product;
 
 use App\Models\Order;
@@ -20,8 +22,16 @@ class AdminController extends Controller
 {
     public function view_catagory()
     {
-       $data=catagory::all();
-         return view('admin.catagory',compact('data'));
+        if(Auth::id())
+        {
+            $data=catagory::all();
+            return view('admin.catagory',compact('data'));
+        }
+        else
+        {
+            return redirect('login');
+        }
+
     }
 
     public function delete_catagory($id)

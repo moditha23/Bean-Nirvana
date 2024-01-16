@@ -80,47 +80,97 @@ public function redirect()
 
     public function add_cart(Request $request,$id)
     {
-        if(Auth::id())
-        {
-            $user=Auth::user();
-            $product=product::find($id);
-            $cart=new cart;
-            $cart->name=$user->name;
-            $cart->email=$user->email;
-            $cart->phone=$user->phone;
-            $cart->address=$user->address;
-            $cart->user_id=$user->id;
-            $cart->product_title=$product->title;
+        if (Auth::id()) {
+            $user = Auth::user();
 
-            if($product->discount!=null)
-            {
-                $cart->price=$product->discount * $request->quantity;
+            $userid = $user->id;
+
+            $product = product::find($id);
+
+            $product_exist_id = cart::where('Product_id', '=', $id)->where('user_id', '=', $userid)->get('id')->first();
+
+            $error = '';
+
+            if ($product_exist_id) {
+                $cart = cart::find($product_exist_id)->first();
+                $quantity = $cart->quantity;
+                $cart->quantity = $quantity + $request->quantity;
+
+                if ($product->discount != null) {
+                    $cart->price = $product->discount * $cart->quantity;
+                } else {
+                    $cart->price = $product->price * $cart->quantity;
+                }
+
+                if ($request->quantity > $product->quantity) {
+                    $error = 'Requested quantity is not available in the product table.';
+                }
+
+                if ($request->quantity <= 0) {
+                    $error = 'Quantity cannot be less than or equal to zero.';
+                }
+
+                if ($error) {
+                    return redirect()->back()->with('error', $error);
+                }
+
+                $product->quantity -= $request->quantity;
+                $product->save();
+
+                $cart->save();
+                return redirect()->back()->with('message', 'Product Added Successfully');
+            } else {
+                if ($request->quantity > $product->quantity) {
+                    $error = 'Requested quantity is not available in the product table.';
+                }
+
+                if ($request->quantity <= 0) {
+                    $error = 'Quantity cannot be less than or equal to zero.';
+                }
+
+                if ($error) {
+                    return redirect()->back()->with('error', $error);
+                }
+
+                $cart = new cart;
+                $cart->name = $user->name;
+                $cart->email = $user->email;
+                $cart->phone = $user->phone;
+                $cart->address = $user->address;
+                $cart->user_id = $user->id;
+                $cart->product_title = $product->title;
+
+                if ($product->discount != null) {
+                    $cart->price = $product->discount * $request->quantity;
+                } else {
+                    $cart->price = $product->price * $request->quantity;
+                }
+
+                $cart->image = $product->image;
+                $cart->Product_id = $product->id;
+                $cart->quantity = $request->quantity;
+                $cart->save();
+
+                $product->quantity -= $request->quantity;
+                $product->save();
+
+                return redirect()->back()->with('message', 'Product Added Successfully');
             }
-
-            else
-            {
-                $cart->price=$product->price * $request->quantity;
-            }
-
-
-
-            $cart->image=$product->image;
-            $cart->Product_id=$product->id;
-            $cart->quantity=$request->quantity;
-            $cart->save();
-
-            return redirect()->back();
-
-
-
-        }
-
-        else
-        {
+        } else {
             return redirect('login');
         }
-
     }
+
+    public function remove_cart($id)
+    {
+        $cart = cart::find($id);
+        $product = Product::find($cart->Product_id);
+        $product->quantity += $cart->quantity;
+        $product->save();
+        $cart->delete();
+
+        return redirect()->back();
+}
 
 
 
@@ -144,58 +194,45 @@ public function redirect()
     }
 
 
-    public function remove_cart($id)
-    {
-        $cart=cart::find($id);
-
-        $cart->delete();
-
-        return redirect()->back();
-    }
-
-
-
     public function cash_order()
 
     {
-        $user=Auth::user();
+        $user = Auth::user();
+    $userid = $user->id;
 
-        $userid=$user->id;
+    $data = cart::where('user_id', '=', $userid)->get();
 
-        $data=cart::where('user_id','=',$userid)->get();
+    foreach ($data as $item) {
+        $product = Product::find($item->Product_id);
+        $product->quantity -= $item->quantity;
+        $product->save();
 
-        foreach ($data as $data)
-        {
+        $order = new Order;
 
-            $order=new Order;
+        $order->name = $item->name;
+        $order->email = $item->email;
+        $order->phone = $item->phone;
+        $order->address = $item->address;
+        $order->user_id = $user->id;
+        $order->product_title = $item->product_title;
+        $order->price = $item->price;
+        $order->quantity = $item->quantity;
+        $order->image = $item->image;
+        $order->product_id = $item->Product_id;
 
-            $order->name=$data->name;
-            $order->email=$data->email;
-            $order->phone=$data->phone;
-            $order->address=$data->address;
-            $order->user_id=$data->user_id;
-            $order->product_title=$data->product_title;
-            $order->price=$data->price;
-            $order->quantity=$data->quantity;
-            $order->image=$data->image;
-            $order->product_id=$data->Product_id;
+        $order->payment_ststus = 'Cash on Delivery';
+        $order->delivery_status = 'Processing';
 
-            $order->payment_ststus='Cash on Delivery';
-            $order->delivery_status='Processing';
+        $order->save();
 
+        $cart_id = $item->id;
 
+        $cart = cart::find($cart_id);
 
-            $order->save();
+        $cart->delete();
+    }
 
-            $cart_id=$data->id;
-
-            $cart=cart::find($cart_id);
-
-            $cart->delete();
-
-        }
-
-        return redirect()->back()->with('message','We Have Received Your Order.');
+    return redirect()->back()->with('message', 'We Have Received Your Order.');
 
     }
 
@@ -209,46 +246,46 @@ public function redirect()
     {
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        Stripe\Charge::create ([
-                "amount" => $totalprice * 100,
-                "currency" => "usd",
-                "source" => $request->stripeToken,
-                "description" => "Thank You for the Payment"
+        Stripe\Charge::create([
+            "amount" => $totalprice * 100,
+            "currency" => "usd",
+            "source" => $request->stripeToken,
+            "description" => "Thank You for the Payment"
         ]);
 
-        $user=Auth::user();
+        $user = Auth::user();
+        $userid = $user->id;
 
-        $userid=$user->id;
+        $data = cart::where('user_id', '=', $userid)->get();
 
-        $data=cart::where('user_id','=',$userid)->get();
+        foreach ($data as $item) {
+            $product = Product::find($item->Product_id);
+            $product->quantity -= $item->quantity;
+            $product->save();
 
-        foreach ($data as $data)
-        {
+            $order = new Order;
 
-            $order=new Order;
+            $order->name = $item->name;
+            $order->email = $item->email;
+            $order->phone = $item->phone;
+            $order->address = $item->address;
+            $order->user_id = $user->id;
+            $order->product_title = $item->product_title;
+            $order->price = $item->price;
+            $order->quantity = $item->quantity;
+            $order->image = $item->image;
+            $order->product_id = $item->Product_id;
 
-            $order->name=$data->name;
-            $order->email=$data->email;
-            $order->phone=$data->phone;
-            $order->address=$data->address;
-            $order->user_id=$data->user_id;
-            $order->product_title=$data->product_title;
-            $order->price=$data->price;
-            $order->quantity=$data->quantity;
-            $order->image=$data->image;
-            $order->product_id=$data->Product_id;
-
-            $order->payment_ststus='Paid';
-            $order->delivery_status='Processing';
+            $order->payment_ststus = 'Paid';
+            $order->delivery_status = 'Processing';
 
             $order->save();
 
-            $cart_id=$data->id;
+            $cart_id = $item->id;
 
-            $cart=cart::find($cart_id);
+            $cart = cart::find($cart_id);
 
             $cart->delete();
-
         }
 
         Session::flash('success', 'Payment successful!');
@@ -332,6 +369,23 @@ public function redirect()
         return view('home.userpage',compact('product','comment','reply'));
     }
 
+    public function products()
+    {
+        $product=Product::paginate(10);
+        $comment=comment::orderby('id','desc')->get();
+        $reply=reply::all();
+        return view('home.all_product',compact('product','comment','reply'));
+    }
+
+
+    public function search_product(Request $request)
+    {
+        $comment=comment::orderby('id','desc')->get();
+        $reply=reply::all();
+        $search_text=$request->search;
+        $product=product::where('title','LIKE',"%$search_text%")->orWhere('catagory','LIKE',"$search_text")->paginate(10);
+        return view('home.all_product',compact('product','comment','reply'));
+    }
 }
 
 

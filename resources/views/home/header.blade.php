@@ -20,7 +20,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" style="">Products</a>
+                        <a class="nav-link" href="{{url('products')}}" style="">Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="" target="_blank" style="">Blog</a>

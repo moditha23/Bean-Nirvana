@@ -33,6 +33,9 @@
                         <a class="nav-link" href="{{url('show_cart')}}" style="">Cart</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('show_order')}}" style="">Order</a>
+                    </li>
 
 
                     <form class="form-inline">

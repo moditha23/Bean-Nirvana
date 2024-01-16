@@ -14,8 +14,8 @@
 
         .table_deg {
             border-collapse: collapse;
-            width: 100%;
-            margin: auto;
+
+            margin-right: 1px;
         }
 
         .th_deg {

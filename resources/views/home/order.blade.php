@@ -26,7 +26,7 @@
 
         .center{
             margin-left: 300px;
-            width: 70%;
+            width: 50%;
             padding: 30px;
             text-align: center;
         }

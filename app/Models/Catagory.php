@@ -11,6 +11,5 @@ class Catagory extends Model
 
     protected $fillable = [
         'catagory_name',
-
     ];
 }
